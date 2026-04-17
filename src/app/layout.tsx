@@ -3,7 +3,7 @@ import './globals.css';
 import { PdfProvider } from '@/context/PdfContext';
 
 export const metadata: Metadata = {
-  title: 'PDFEdit - Edit PDFs in your browser',
+  title: 'OnTheGo PDF - Conver & Edit PDF, Anywhere, Instantly.',
   description: 'Click any text to edit it. Download when done. No uploads, no accounts.',
 };
 
