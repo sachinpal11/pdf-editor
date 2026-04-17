@@ -31,36 +31,40 @@ export default function UploadZone({ onFile }: Props) {
       onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
       onDragLeave={() => setDragging(false)}
       onClick={() => inputRef.current?.click()}
-      className={`
-        border-2 border-dashed rounded-2xl p-16 text-center cursor-pointer
-        transition-all duration-200 select-none
+      className={`transition-all duration-200 select-none rounded-[20px] py-16 px-8 text-center cursor-pointer border-2 border-dashed
         ${dragging
-          ? 'border-amber-400 bg-amber-50 scale-[1.02]'
-          : 'border-gray-300 hover:border-amber-400 hover:bg-amber-50/50'
-        }
-      `}
+          ? 'border-[#F5520C] bg-[rgba(245,82,12,0.06)] scale-[1.02] shadow-[0_0_40px_rgba(245,82,12,0.12)]'
+          : 'border-white/[0.12] bg-white/[0.02] hover:border-[rgba(245,82,12,0.5)] hover:bg-[rgba(245,82,12,0.04)]'
+        }`}
     >
-      <div className="flex flex-col items-center gap-4">
-        <div className={`w-16 h-16 rounded-full flex items-center justify-center transition-colors ${dragging ? 'bg-amber-100' : 'bg-gray-100'}`}>
-          {dragging ? (
-            <FileText className="w-8 h-8 text-amber-500" />
-          ) : (
-            <Upload className="w-8 h-8 text-gray-400" />
-          )}
+      <div className="flex flex-col items-center gap-5">
+        {/* Icon */}
+        <div
+          className={`w-[72px] h-[72px] rounded-full flex items-center justify-center transition-all duration-200
+            ${dragging ? 'bg-[rgba(245,82,12,0.15)] border border-[rgba(245,82,12,0.4)]' : 'bg-white/[0.05] border border-white/[0.08]'}`}
+        >
+          {dragging ? <FileText size={30} color="#F5520C" /> : <Upload size={30} color="#555555" />}
         </div>
+
+        {/* Text */}
         <div>
-          <p className="text-lg font-medium text-gray-700">
+          <p className={`text-[17px] font-semibold mb-2 ${dragging ? 'text-white' : 'text-[#CCCCCC]'}`}>
             {dragging ? 'Drop your PDF here' : 'Drop a PDF file here'}
           </p>
-          <p className="mt-1 text-sm text-gray-500">
-            or{' '}
-            <span className="text-amber-500 font-medium underline underline-offset-2">
-              browse to upload
-            </span>
+          <p className="text-[13px] text-[#555555]">
+            or <span className="text-[#F5520C] font-medium">browse to upload</span>
           </p>
         </div>
-        <p className="text-xs text-gray-400">Your file never leaves the browser</p>
+
+        {/* Format badge */}
+        <div className="flex items-center gap-2">
+          <span className="bg-[rgba(245,82,12,0.1)] text-[#F5520C] border border-[rgba(245,82,12,0.2)] rounded-[6px] px-2.5 py-[3px] text-[11px] font-semibold">
+            PDF
+          </span>
+          <span className="text-[11px] text-[#444444]">Max 100MB · Stays in your browser</span>
+        </div>
       </div>
+
       <input
         ref={inputRef}
         type="file"

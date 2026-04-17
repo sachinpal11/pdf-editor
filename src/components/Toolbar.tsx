@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut, X, Download, FileText, Type } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut, X, Download, FileText, Type, Loader2 } from 'lucide-react';
 import { FONT_OPTIONS, DEFAULT_FONT } from '@/lib/fontOptions';
 import type { FontOption } from '@/lib/fontOptions';
 
@@ -21,92 +21,84 @@ interface Props {
   downloading: boolean;
 }
 
+function Divider() {
+  return <div className="h-5 w-px bg-white/[0.08] mx-1" />;
+}
+
+function IconBtn({ onClick, disabled, title, children }: { onClick: () => void; disabled?: boolean; title?: string; children: React.ReactNode }) {
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      title={title}
+      className="p-1.5 rounded-lg text-[#888888] hover:text-white hover:bg-white/[0.07] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-150"
+    >
+      {children}
+    </button>
+  );
+}
+
 export default function Toolbar({
-  filename,
-  pageIndex,
-  numPages,
-  scale,
-  editCount,
-  selectedFont,
-  onFontChange,
-  onPagePrev,
-  onPageNext,
-  onZoomIn,
-  onZoomOut,
-  onDownload,
-  onClose,
-  downloading,
+  filename, pageIndex, numPages, scale, editCount,
+  selectedFont, onFontChange, onPagePrev, onPageNext,
+  onZoomIn, onZoomOut, onDownload, onClose, downloading,
 }: Props) {
   return (
-    <div className="sticky top-0 z-50 flex items-center gap-2 px-4 py-3 bg-gray-900 text-white shadow-lg flex-wrap">
-      <button
-        onClick={onClose}
-        className="p-1.5 rounded-lg hover:bg-white/10 transition-colors"
-        title="Close"
-      >
+    <div className="sticky top-0 z-50 flex items-center gap-2 px-4 py-2.5 flex-wrap bg-[#111111] border-b border-white/[0.07] shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+
+      {/* Close */}
+      <IconBtn onClick={onClose} title="Back to tools">
         <X className="w-4 h-4" />
-      </button>
+      </IconBtn>
 
-      <div className="flex items-center gap-2 text-sm text-gray-300 min-w-0">
-        <FileText className="w-4 h-4 flex-shrink-0 text-amber-400" />
-        <span className="truncate max-w-40 text-white font-medium">{filename}</span>
+      {/* Filename */}
+      <div className="flex items-center gap-2 text-sm min-w-0">
+        <FileText className="w-4 h-4 shrink-0 text-[#F5520C]" />
+        <span className="truncate max-w-[160px] text-[13px] font-medium text-white">{filename}</span>
       </div>
 
-      <div className="h-5 w-px bg-gray-600 mx-1" />
+      <Divider />
 
+      {/* Page navigation */}
       <div className="flex items-center gap-1">
-        <button
-          onClick={onPagePrev}
-          disabled={pageIndex === 0}
-          className="p-1.5 rounded-lg hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-        >
+        <IconBtn onClick={onPagePrev} disabled={pageIndex === 0}>
           <ChevronLeft className="w-4 h-4" />
-        </button>
-        <span className="text-sm text-gray-300 px-2 tabular-nums">
-          {pageIndex + 1} / {numPages}
+        </IconBtn>
+        <span className="text-[12px] text-[#666666] px-2 tabular-nums">
+          <span className="text-white">{pageIndex + 1}</span> / {numPages}
         </span>
-        <button
-          onClick={onPageNext}
-          disabled={pageIndex >= numPages - 1}
-          className="p-1.5 rounded-lg hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-        >
+        <IconBtn onClick={onPageNext} disabled={pageIndex >= numPages - 1}>
           <ChevronRight className="w-4 h-4" />
-        </button>
+        </IconBtn>
       </div>
 
-      <div className="h-5 w-px bg-gray-600 mx-1" />
+      <Divider />
 
+      {/* Zoom */}
       <div className="flex items-center gap-1">
-        <button
-          onClick={onZoomOut}
-          disabled={scale <= 0.5}
-          className="p-1.5 rounded-lg hover:bg-white/10 disabled:opacity-40 transition-colors"
-        >
+        <IconBtn onClick={onZoomOut} disabled={scale <= 0.5}>
           <ZoomOut className="w-4 h-4" />
-        </button>
-        <span className="text-sm text-gray-300 px-2 tabular-nums w-14 text-center">
+        </IconBtn>
+        <span className="text-[12px] text-[#666666] px-2 tabular-nums w-12 text-center">
           {Math.round(scale * 100)}%
         </span>
-        <button
-          onClick={onZoomIn}
-          disabled={scale >= 3}
-          className="p-1.5 rounded-lg hover:bg-white/10 disabled:opacity-40 transition-colors"
-        >
+        <IconBtn onClick={onZoomIn} disabled={scale >= 3}>
           <ZoomIn className="w-4 h-4" />
-        </button>
+        </IconBtn>
       </div>
 
-      <div className="h-5 w-px bg-gray-600 mx-1" />
+      <Divider />
 
+      {/* Font selector */}
       <div className="flex items-center gap-2">
-        <Type className="w-4 h-4 text-gray-400 flex-shrink-0" />
+        <Type className="w-4 h-4 text-[#555555] shrink-0" />
         <select
           value={selectedFont.css}
           onChange={(e) => {
             const found = FONT_OPTIONS.find((f) => f.css === e.target.value) ?? DEFAULT_FONT;
             onFontChange(found);
           }}
-          className="bg-gray-800 text-white text-sm rounded-lg px-2 py-1.5 border border-gray-600 focus:outline-none focus:border-amber-400 cursor-pointer hover:bg-gray-700 transition-colors"
+          className="bg-[#1A1A1A] text-white text-[12px] rounded-lg px-2.5 py-1.5 border border-white/[0.08] focus:outline-none focus:border-[rgba(245,82,12,0.5)] cursor-pointer hover:bg-[#222222] transition-colors"
           style={{ fontFamily: selectedFont.css }}
         >
           {FONT_OPTIONS.map((f) => (
@@ -117,22 +109,23 @@ export default function Toolbar({
         </select>
       </div>
 
+      {/* Right side */}
       <div className="ml-auto flex items-center gap-3">
         {editCount > 0 && (
-          <span className="text-xs bg-amber-500/20 text-amber-400 px-2 py-1 rounded-full">
+          <span className="text-[11px] bg-[rgba(245,82,12,0.12)] text-[#F5520C] border border-[rgba(245,82,12,0.2)] px-2.5 py-1 rounded-full tabular-nums">
             {editCount} edit{editCount !== 1 ? 's' : ''}
           </span>
         )}
         <button
           onClick={onDownload}
           disabled={downloading}
-          className="flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-black font-semibold rounded-lg text-sm transition-all active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl text-[13px] font-semibold text-white cursor-pointer transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-[0_0_20px_rgba(245,82,12,0.4)] hover:-translate-y-px active:scale-95"
+          style={{ background: 'linear-gradient(0deg,#F5520C 0%,#FF823E 100%)', border: '1.5px solid rgba(255,154,100,0.79)' }}
         >
-          {downloading ? (
-            <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
-          ) : (
-            <Download className="w-4 h-4" />
-          )}
+          {downloading
+            ? <Loader2 className="w-4 h-4 animate-spin" />
+            : <Download className="w-4 h-4" />
+          }
           {downloading ? 'Exporting…' : 'Download PDF'}
         </button>
       </div>

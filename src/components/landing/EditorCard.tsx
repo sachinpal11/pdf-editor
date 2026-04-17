@@ -5,59 +5,46 @@ const tools = ['Annotate', 'Compress', 'Sign', 'Merge'];
 export default function EditorCard() {
   return (
     <div
-      className="transition-all duration-200"
+      className="transition-all duration-200 w-[360px] bg-[#0D0D0D] border border-white/10 rounded-2xl p-5 shrink-0 z-10 hover:-translate-y-1 hover:border-white/[0.14]"
       style={{
-        width: 360, background: '#0D0D0D',
-        border: '1px solid rgba(255,255,255,0.10)',
         borderTop: '2px solid #F5520C',
-        borderRadius: 16, padding: 20,
-        boxShadow: '0 50px 120px rgba(0,0,0,0.7), 0 0 60px rgba(245,82,12,0.08)',
         transform: 'translateY(-28px)',
-        zIndex: 10, flexShrink: 0,
+        boxShadow: '0 50px 120px rgba(0,0,0,0.7), 0 0 60px rgba(245,82,12,0.08)',
       }}
-      onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-32px)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.14)'; e.currentTarget.style.borderTopColor = '#F5520C'; }}
-      onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(-28px)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.10)'; e.currentTarget.style.borderTopColor = '#F5520C'; }}
     >
       {/* Header */}
-      <div className="flex items-center justify-between" style={{ marginBottom: 12 }}>
-        <div className="flex items-center" style={{ gap: 6 }}>
-          <span style={{ fontSize: 13, fontWeight: 600, color: '#FFFFFF' }}>PDF Editor</span>
+      <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center gap-1.5">
+          <span className="text-[13px] font-semibold text-white">PDF Editor</span>
           <Info size={12} color="#555555" />
         </div>
-        <button style={{ background: '#F5520C', borderRadius: 6, padding: '5px 12px', fontSize: 11, fontWeight: 700, color: 'white', border: 'none', cursor: 'pointer' }}>
+        <button className="bg-[#F5520C] rounded-[6px] px-3 py-[5px] text-[11px] font-bold text-white border-none cursor-pointer">
           Export
         </button>
       </div>
 
       {/* Document preview */}
-      <div style={{ position: 'relative', height: 180, background: '#161616', borderRadius: 10, border: '1px solid rgba(255,255,255,0.06)', padding: 16 }}>
-        <div style={{ width: '40%', height: 8, background: '#333333', borderRadius: 999, marginBottom: 14 }} />
-        <div style={{ width: '90%', height: 5, background: '#252525', borderRadius: 999, marginBottom: 8 }} />
-        <div style={{ width: '75%', height: 5, background: '#252525', borderRadius: 999, marginBottom: 8 }} />
-        <div style={{ width: '60%', height: 5, background: 'rgba(245,82,12,0.4)', borderRadius: 999, marginBottom: 8 }} />
-        <div style={{ width: '85%', height: 5, background: '#252525', borderRadius: 999, marginBottom: 8 }} />
-        <div style={{ width: '70%', height: 5, background: '#252525', borderRadius: 999 }} />
-        <div style={{
-          position: 'absolute', top: 10, right: 10,
-          background: '#1A1A1A', border: '1px solid rgba(255,255,255,0.10)',
-          borderRadius: 999, padding: '4px 10px',
-          fontSize: 10, color: '#FFFFFF',
-        }}>
+      <div className="relative h-[180px] bg-[#161616] rounded-[10px] border border-white/[0.06] p-4">
+        <div className="w-[40%] h-2 bg-[#333333] rounded-full mb-3.5" />
+        <div className="w-[90%] h-[5px] bg-[#252525] rounded-full mb-2" />
+        <div className="w-[75%] h-[5px] bg-[#252525] rounded-full mb-2" />
+        <div className="w-[60%] h-[5px] bg-[rgba(245,82,12,0.4)] rounded-full mb-2" />
+        <div className="w-[85%] h-[5px] bg-[#252525] rounded-full mb-2" />
+        <div className="w-[70%] h-[5px] bg-[#252525] rounded-full" />
+        <div className="absolute top-2.5 right-2.5 bg-[#1A1A1A] border border-white/10 rounded-full px-2.5 py-1 text-[10px] text-white">
           ✏️ 3 edits made
         </div>
       </div>
 
       {/* Tool pills */}
-      <div className="flex flex-wrap" style={{ gap: 8, marginTop: 12 }}>
+      <div className="flex flex-wrap gap-2 mt-3">
         {tools.map((t) => {
           const active = t === 'Annotate';
           return (
-            <span key={t} style={{
-              background: active ? 'rgba(245,82,12,0.15)' : '#1A1A1A',
-              border: `1px solid ${active ? 'rgba(245,82,12,0.4)' : 'rgba(255,255,255,0.08)'}`,
-              borderRadius: 6, padding: '5px 10px',
-              fontSize: 11, color: active ? '#F5520C' : '#888888',
-            }}>
+            <span
+              key={t}
+              className={`rounded-[6px] px-2.5 py-[5px] text-[11px] border ${active ? 'bg-[rgba(245,82,12,0.15)] border-[rgba(245,82,12,0.4)] text-[#F5520C]' : 'bg-[#1A1A1A] border-white/[0.08] text-[#888888]'}`}
+            >
               {t}
             </span>
           );
@@ -65,13 +52,13 @@ export default function EditorCard() {
       </div>
 
       {/* Progress */}
-      <div style={{ marginTop: 12 }}>
-        <div className="flex items-center justify-between" style={{ marginBottom: 6 }}>
-          <span style={{ fontSize: 11, color: '#888888' }}>Processing...</span>
-          <span style={{ fontSize: 11, color: '#F5520C', fontWeight: 600, fontVariantNumeric: 'tabular-nums' }}>67%</span>
+      <div className="mt-3">
+        <div className="flex items-center justify-between mb-1.5">
+          <span className="text-[11px] text-[#888888]">Processing...</span>
+          <span className="text-[11px] text-[#F5520C] font-semibold tabular-nums">67%</span>
         </div>
-        <div style={{ width: '100%', height: 3, background: '#1A1A1A', borderRadius: 999 }}>
-          <div style={{ width: '67%', height: '100%', background: 'linear-gradient(to right, #F5520C, #FF6B2B)', borderRadius: 999 }} />
+        <div className="w-full h-[3px] bg-[#1A1A1A] rounded-full">
+          <div className="w-[67%] h-full rounded-full" style={{ background: 'linear-gradient(to right,#F5520C,#FF6B2B)' }} />
         </div>
       </div>
     </div>

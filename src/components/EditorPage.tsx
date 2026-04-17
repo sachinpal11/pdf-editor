@@ -52,10 +52,10 @@ export default function EditorPage({ buffer, filename, onClose }: Props) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-amber-400 border-t-transparent rounded-full animate-spin" />
-          <p className="text-gray-600 font-medium">Loading PDF…</p>
+          <div className="w-12 h-12 border-[3px] border-[#F5520C] border-t-transparent rounded-full animate-spin" />
+          <p className="text-[14px] text-[#666666] font-medium">Loading PDF…</p>
         </div>
       </div>
     );
@@ -63,13 +63,17 @@ export default function EditorPage({ buffer, filename, onClose }: Props) {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <div className="text-center max-w-md px-6">
-          <p className="text-red-600 font-semibold text-lg mb-2">Failed to load PDF</p>
-          <p className="text-gray-500 text-sm mb-6">{error}</p>
+      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center">
+        <div className="text-center max-w-md px-6 bg-[#111111] border border-white/[0.07] rounded-2xl p-10">
+          <div className="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center mx-auto mb-4">
+            <span className="text-red-400 text-xl">✕</span>
+          </div>
+          <p className="text-white font-semibold text-[16px] mb-2">Failed to load PDF</p>
+          <p className="text-[#555555] text-[13px] mb-6">{error}</p>
           <button
             onClick={onClose}
-            className="px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition-colors"
+            className="px-6 py-2.5 rounded-xl text-[13px] font-semibold text-white cursor-pointer transition-all duration-150 hover:-translate-y-px hover:shadow-[0_0_20px_rgba(245,82,12,0.4)]"
+            style={{ background: 'linear-gradient(0deg,#F5520C 0%,#FF823E 100%)', border: '1.5px solid rgba(255,154,100,0.79)' }}
           >
             Try another file
           </button>
@@ -81,7 +85,7 @@ export default function EditorPage({ buffer, filename, onClose }: Props) {
   if (!pdf) return null;
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
+    <div className="min-h-screen bg-[#0A0A0A] flex flex-col">
       <Toolbar
         filename={filename}
         pageIndex={pageIndex}
@@ -99,21 +103,28 @@ export default function EditorPage({ buffer, filename, onClose }: Props) {
         downloading={downloading}
       />
 
-      <div className="flex-1 overflow-auto p-8">
+      {/* PDF canvas area */}
+      <div className="flex-1 overflow-auto p-8 bg-[#0A0A0A]">
         <div className="flex justify-center">
-          <PdfViewer
-            pdf={pdf}
-            pageIndex={pageIndex}
-            scale={scale}
-            edits={edits}
-            selectedFont={selectedFont}
-            onEdit={handleEdit}
-          />
+          <div className="shadow-[0_8px_60px_rgba(0,0,0,0.6)] rounded-lg overflow-hidden">
+            <PdfViewer
+              pdf={pdf}
+              pageIndex={pageIndex}
+              scale={scale}
+              edits={edits}
+              selectedFont={selectedFont}
+              onEdit={handleEdit}
+            />
+          </div>
         </div>
       </div>
 
-      <div className="sticky bottom-0 bg-gray-50 border-t border-gray-200 px-4 py-2 text-xs text-gray-400 text-center">
-        Click any text to edit it. Use the font dropdown to change the typeface. Changes highlighted in amber.
+      {/* Bottom hint bar */}
+      <div className="sticky bottom-0 bg-[#111111] border-t border-white/[0.06] px-4 py-2 text-center">
+        <span className="text-[11px] text-[#444444]">
+          Click any text to edit · Font dropdown changes typeface ·{' '}
+          <span className="text-[#F5520C]">Orange highlight</span> = edited text
+        </span>
       </div>
     </div>
   );
