@@ -25,7 +25,7 @@ export function usePdfPage(
       canvas.height = vp.height;
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
-      page.render({ canvasContext: ctx, viewport: vp, canvas }).promise.then(() => {
+      page.render({ canvasContext: ctx, viewport: vp }).promise.then(() => {
         if (!cancelled) setViewport(vp);
       });
     });
