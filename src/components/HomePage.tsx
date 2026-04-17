@@ -1,64 +1,54 @@
 'use client';
 
-import UploadZone from '@/components/UploadZone';
-import { Shield, Zap, FileEdit } from 'lucide-react';
+import Navbar from './landing/Navbar';
+import HeroBadge from './landing/HeroBadge';
+import HeroHeadline from './landing/HeroHeadline';
+import HeroSubheadline from './landing/HeroSubheadline';
+import CTAButtons from './landing/CTAButtons';
+import SocialProof from './landing/SocialProof';
+import DashboardCards from './landing/DashboardCards';
+import FeaturesStrip from './landing/FeaturesStrip';
 
 interface Props {
-  onFile: (buf: ArrayBuffer, name: string) => void;
+  onUpload: () => void;
 }
 
-export default function HomePage({ onFile }: Props) {
+export default function HomePage({ onUpload }: Props) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-amber-50/30 flex flex-col">
-      <header className="px-6 py-5 flex items-center gap-3">
-        <div className="w-8 h-8 bg-amber-400 rounded-lg flex items-center justify-center">
-          <FileEdit className="w-4 h-4 text-black" />
+    <div style={{ background: '#0A0A0A', minHeight: '100vh', fontFamily: "'Nimbus Sans Thai', sans-serif", color: '#FFFFFF', overflowX: 'hidden' }}>
+      <Navbar onGetStarted={onUpload} />
+
+      <section style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: 100, position: 'relative', overflow: 'hidden' }}>
+        {/* Background glows */}
+        {/* <div
+          className="animate-glow-pulse"
+          style={{
+            position: 'absolute', top: -120, left: '50%', transform: 'translateX(-50%)',
+            width: 900, height: 700, pointerEvents: 'none', zIndex: 0,
+            background: 'radial-gradient(ellipse at center, rgba(245,82,12,0.28) 0%, transparent 50%)',
+          }}
+        /> */}
+        <div
+          style={{
+            position: 'absolute', top: -400, left: '50%', transform: 'translateX(-50%)',
+            width: 1000, height: 900, pointerEvents: 'none', zIndex: 0,
+            background: 'radial-gradient(ellipse at center, rgba(255, 90, 20, 0.32) 0%, transparent 70%)',
+            filter: 'blur(40px)',
+          }}
+        />
+
+        {/* Hero content */}
+        <div style={{ position: 'relative', zIndex: 10, maxWidth: 780, width: '100%', textAlign: 'center', padding: '0 20px' }}>
+          <HeroBadge />
+          <HeroHeadline />
+          <HeroSubheadline />
+          <CTAButtons onGetStarted={onUpload} />
+          {/* <SocialProof /> */}
+          <DashboardCards />
         </div>
-        <span className="font-bold text-gray-900 text-lg tracking-tight">PDFEdit</span>
-      </header>
+      </section>
 
-      <main className="flex-1 flex flex-col items-center justify-center px-4 py-12">
-        <div className="w-full max-w-xl space-y-8">
-          <div className="text-center space-y-3">
-            <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
-              Edit PDFs in your browser
-            </h1>
-            <p className="text-gray-500 text-lg">
-              Click any text to edit it. Download when done. No uploads, no accounts.
-            </p>
-          </div>
-
-          <UploadZone onFile={onFile} />
-
-          <div className="grid grid-cols-3 gap-4 pt-4">
-            <div className="text-center space-y-2">
-              <div className="w-10 h-10 mx-auto bg-green-100 rounded-xl flex items-center justify-center">
-                <Shield className="w-5 h-5 text-green-600" />
-              </div>
-              <p className="text-xs font-medium text-gray-700">100% Private</p>
-              <p className="text-xs text-gray-400">File never leaves your device</p>
-            </div>
-            <div className="text-center space-y-2">
-              <div className="w-10 h-10 mx-auto bg-amber-100 rounded-xl flex items-center justify-center">
-                <Zap className="w-5 h-5 text-amber-500" />
-              </div>
-              <p className="text-xs font-medium text-gray-700">Instant Editing</p>
-              <p className="text-xs text-gray-400">No wait, no processing</p>
-            </div>
-            <div className="text-center space-y-2">
-              <div className="w-10 h-10 mx-auto bg-blue-100 rounded-xl flex items-center justify-center">
-                <FileEdit className="w-5 h-5 text-blue-500" />
-              </div>
-              <p className="text-xs font-medium text-gray-700">Font Preserved</p>
-              <p className="text-xs text-gray-400">Keeps original look & feel</p>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      <footer className="text-center py-4 text-xs text-gray-400">
-        Works entirely in your browser — no server, no storage, no tracking.
-      </footer>
+      <FeaturesStrip />
     </div>
   );
 }

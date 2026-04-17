@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { PdfProvider } from '@/context/PdfContext';
 
 export const metadata: Metadata = {
   title: 'PDFEdit - Edit PDFs in your browser',
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body><PdfProvider>{children}</PdfProvider></body>
     </html>
   );
 }
