@@ -5,7 +5,7 @@ import type { PDFDocumentProxy } from 'pdfjs-dist';
 
 async function getPdfjsLib() {
   const pdfjsLib = await import('pdfjs-dist');
-  pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
+  pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
   return pdfjsLib;
 }
 

@@ -8,6 +8,7 @@ import CTAButtons from './landing/CTAButtons';
 import DashboardCards from './landing/DashboardCards';
 import FeaturesStrip from './landing/FeaturesStrip';
 import Footer from './landing/Footer';
+import Image from 'next/image';
 
 interface Props {
   onUpload: () => void;
@@ -36,7 +37,19 @@ export default function HomePage({ onUpload }: Props) {
           <HeroHeadline />
           <HeroSubheadline />
           <CTAButtons onGetStarted={onUpload} />
-          <DashboardCards />
+          <div className="relative mt-24 max-w-[1000px] mx-auto">
+            <div className="relative sm:scale-100 scale-140 sm:mt-0 mt-25 overflow-hidden rounded-xl">
+              <Image
+                src={"/images/onthegopdf.png"}
+                alt="Hero Showcase"
+                width={1000}
+                height={600}
+                className="w-full h-auto"
+              />
+              {/* Solid bottom fade to background color */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/60 to-transparent pointer-events-none" />
+            </div>
+          </div>
         </div>
       </section>
 
