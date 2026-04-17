@@ -1,0 +1,20 @@
+/node_modules
+/.next
+/out
+/.env
+/.env.local
+/.env.development.local
+/.env.test.local
+/.env.production.local
+*.log
+
+
+// add node_modules
+// add .next
+// add out
+// add .env
+// add .env.local
+// add .env.development.local
+// add .env.test.local
+// add .env.production.local
+// add *.log
