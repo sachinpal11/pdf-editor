@@ -40,7 +40,7 @@ export default function HomePage({ onUpload }: Props) {
           <div className="relative mt-24 max-w-[1000px] mx-auto">
             <div className="relative sm:scale-100 scale-140 sm:mt-0 mt-25 overflow-hidden rounded-xl">
               <Image
-                src={"/images/onthegopdf.png"}
+                src={"/images/onthegopdf.webp"}
                 alt="Hero Showcase"
                 width={1000}
                 height={600}
