@@ -21,7 +21,7 @@ function buildBackground(bgColor: string, isEdited: boolean): string {
   const [r, g, b] = m.map(Number);
   const blendR = Math.round(r * 0.7 + 251 * 0.3);
   const blendG = Math.round(g * 0.7 + 191 * 0.3);
-  const blendB = Math.round(b * 0.7 + 36  * 0.3);
+  const blendB = Math.round(b * 0.7 + 36 * 0.3);
   return `rgb(${blendR},${blendG},${blendB})`;
 }
 

@@ -34,12 +34,17 @@ export async function exportPdf(
       const charWidth = fs * 0.6;
 
       const [bgR, bgG, bgB] = edit.bgColor;
+      // Snap to white if very close to avoid visible boxes on white pages
+      const finalBgR = bgR > 250 && bgG > 250 && bgB > 250 ? 255 : bgR;
+      const finalBgG = bgR > 250 && bgG > 250 && bgB > 250 ? 255 : bgG;
+      const finalBgB = bgR > 250 && bgG > 250 && bgB > 250 ? 255 : bgB;
+
       page.drawRectangle({
         x: x - 1,
         y: y - 2,
         width: Math.max(edit.originalText.length, edit.newText.length) * charWidth + 4,
         height: fs + 4,
-        color: rgb(bgR / 255, bgG / 255, bgB / 255),
+        color: rgb(finalBgR / 255, finalBgG / 255, finalBgB / 255),
         opacity: 1,
       });
 
