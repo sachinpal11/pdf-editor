@@ -3,8 +3,11 @@ import './globals.css';
 import { PdfProvider } from '@/context/PdfContext';
 
 export const metadata: Metadata = {
-  title: 'OnTheGo PDF - Conver & Edit PDF, Anywhere, Instantly.',
+  title: 'OnTheGo PDF - Convert & Edit PDF, Anywhere, Instantly.',
   description: 'Click any text to edit it. Download when done. No uploads, no accounts.',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
