@@ -7,14 +7,19 @@ import HeroSubheadline from './landing/HeroSubheadline';
 import CTAButtons from './landing/CTAButtons';
 import DashboardCards from './landing/DashboardCards';
 import FeaturesStrip from './landing/FeaturesStrip';
+import ToolsSection from './landing/ToolsSection';
+import PricingSection from './landing/PricingSection';
 import Footer from './landing/Footer';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 interface Props {
   onUpload: () => void;
 }
 
 export default function HomePage({ onUpload }: Props) {
+  const router = useRouter();
+
   return (
     <div className="bg-[#0A0A0A] min-h-screen text-white overflow-x-hidden">
       <Navbar onGetStarted={onUpload} />
@@ -53,7 +58,21 @@ export default function HomePage({ onUpload }: Props) {
         </div>
       </section>
 
-      <FeaturesStrip />
+      {/* <FeaturesStrip /> */}
+
+      <ToolsSection
+        onViewAll={() => router.push('/all-tools')}
+        onToolClick={(title) => {
+          if (title === 'Edit PDF') {
+            onUpload();
+          } else {
+            router.push('/all-tools');
+          }
+        }}
+      />
+
+      <PricingSection />
+
       <Footer />
     </div>
   );

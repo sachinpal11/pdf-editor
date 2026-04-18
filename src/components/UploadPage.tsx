@@ -2,6 +2,7 @@
 
 import { ArrowLeft } from 'lucide-react';
 import UploadZone from '@/components/UploadZone';
+import GradientText from '@/components/ui/GradientText';
 import Navbar from '@/components/landing/Navbar';
 
 interface Props {
@@ -43,7 +44,7 @@ export default function UploadPage({ onFile, onBack }: Props) {
           </div>
 
           <h1 className="text-[clamp(24px,4vw,36px)] font-medium text-white tracking-[-0.02em] leading-[1.1] mb-3">
-            Upload your PDF
+            Upload your <GradientText>PDF</GradientText>
           </h1>
           <p className="text-[14px] text-[#9b9b9b] leading-[1.6]">
             Click any text to edit it. Your file never leaves your browser.

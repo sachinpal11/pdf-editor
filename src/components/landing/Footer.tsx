@@ -1,3 +1,5 @@
+import GradientText from '../ui/GradientText';
+
 const navColumns = [
   {
     header: 'Resources',
@@ -91,15 +93,7 @@ export default function Footer() {
           className="font-black font-medium whitespace-nowrap leading-[0.85] tracking-[-0.025em] text-white"
           style={{ fontSize: 'clamp(48px, 15vw, 210px)' }}
         >
-          OnTheGo<span
-            style={{
-              background: 'linear-gradient(0deg,#F5520C 0%,#FF823E 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              color: 'transparent'
-            }}
-          >PDF</span>
+          OnTheGo<GradientText>PDF</GradientText>
         </p>
       </div>
     </footer>
