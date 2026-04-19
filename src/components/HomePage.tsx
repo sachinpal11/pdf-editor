@@ -7,6 +7,7 @@ import HeroSubheadline from './landing/HeroSubheadline';
 import CTAButtons from './landing/CTAButtons';
 import DashboardCards from './landing/DashboardCards';
 import FeaturesStrip from './landing/FeaturesStrip';
+import FeaturesSection from './landing/FeaturesSection';
 import ToolsSection from './landing/ToolsSection';
 import PricingSection from './landing/PricingSection';
 import Footer from './landing/Footer';
@@ -14,16 +15,26 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 interface Props {
-  onUpload: () => void;
+  onUpload?: () => void;
 }
 
 export default function HomePage({ onUpload }: Props) {
   const router = useRouter();
 
+  const handleGetStarted = () => {
+    if (onUpload) {
+      onUpload();
+    } else {
+      router.push('/all-tools');
+    }
+  };
+
   return (
     <div className="bg-[#0A0A0A] min-h-screen text-white overflow-x-hidden">
-      <Navbar onGetStarted={onUpload} />
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[999] focus:p-4 focus:bg-white focus:text-black">Skip to main content</a>
+      <Navbar onGetStarted={handleGetStarted} />
 
+      <main id="main-content">
       <section className="min-h-screen flex flex-col items-center justify-center pt-24 relative overflow-hidden">
         {/* Background glow */}
         <div
@@ -41,14 +52,15 @@ export default function HomePage({ onUpload }: Props) {
           <HeroBadge />
           <HeroHeadline />
           <HeroSubheadline />
-          <CTAButtons onGetStarted={onUpload} />
+          <CTAButtons onGetStarted={handleGetStarted} />
           <div className="relative mt-24 max-w-[1000px] mx-auto">
             <div className="relative sm:scale-100 scale-140 sm:mt-0 mt-25 overflow-hidden rounded-xl">
               <Image
-                src={"/images/onthegopdf.webp"}
-                alt="Hero Showcase"
+                src={"/images/onthegopdf1.webp"}
+                alt="OnTheGo PDF editor dashboard showing PDF editing interface with tools for editing, merging, and converting documents"
                 width={1000}
                 height={600}
+                priority
                 className="w-full h-auto"
               />
               {/* Solid bottom fade to background color */}
@@ -58,22 +70,23 @@ export default function HomePage({ onUpload }: Props) {
         </div>
       </section>
 
-      {/* <FeaturesStrip /> */}
 
       <ToolsSection
         onViewAll={() => router.push('/all-tools')}
         onToolClick={(title) => {
           if (title === 'Edit PDF') {
-            onUpload();
+            handleGetStarted();
           } else {
             router.push('/all-tools');
           }
         }}
       />
 
+      {/* <FeaturesSection /> */}
       <PricingSection />
 
       <Footer />
+      </main>
     </div>
   );
 }

@@ -4,7 +4,7 @@ interface Props {
 
 export default function CTAButtons({ onGetStarted }: Props) {
   return (
-    <div className="animate-fade-up delay-360 flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
       <button
         onClick={onGetStarted}
         className="w-full sm:w-auto max-w-xs rounded-xl text-[15px] font-normal text-white cursor-pointer transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(245,82,12,0.6),0_4px_10px_rgba(0,0,0,0.2)]"

@@ -9,7 +9,7 @@ const PricingSection: React.FC = () => {
         <h2 className="text-[clamp(36px,5vw,56px)] font-medium text-white tracking-tight">
           Simple, Transparent <GradientText>Pricing</GradientText>
         </h2>
-        <p className="text-[17px] text-[#888888] max-w-[600px] mx-auto leading-relaxed">
+        <p className="text-[17px] text-[#999999] max-w-[600px] mx-auto leading-relaxed">
           We believe in keeping tools accessible. Our core features are free, and they always will be.
         </p>
       </div>

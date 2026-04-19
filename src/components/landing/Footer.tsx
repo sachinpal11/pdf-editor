@@ -44,7 +44,8 @@ export default function Footer() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 bg-[#1C1C1C] border border-white/[0.08] rounded-[10px] px-4 py-[11px] text-[14px] text-white placeholder-[#555555] outline-none focus:border-white/20 transition-colors duration-150"
+              aria-label="Email address for newsletter subscription"
+              className="flex-1 bg-[#1C1C1C] border border-white/[0.08] rounded-[10px] px-4 py-[11px] text-[14px] text-white placeholder-[#777777] outline-none focus:border-white/20 transition-colors duration-150"
             />
             <button
               className="whitespace-nowrap text-white text-[14px] font-semibold rounded-xl px-5 py-[11px] cursor-pointer transition-all duration-150 hover:shadow-[0_0_20px_rgba(245,82,12,0.5)] hover:-translate-y-px"
@@ -55,11 +56,11 @@ export default function Footer() {
           </div>
 
           {/* Disclaimer */}
-          <p className="text-[11px] text-[#555555] mt-3">
+          <p className="text-[11px] text-[#888888] mt-3">
             By subscribing you agree to with our{' '}
             <a
               href="#"
-              className="text-[#888888] underline underline-offset-2 hover:text-white transition-colors duration-150"
+              className="text-[#999999] underline underline-offset-2 hover:text-white transition-colors duration-150"
             >
               Privacy Policy
             </a>
@@ -76,7 +77,7 @@ export default function Footer() {
                   <a
                     key={link}
                     href="#"
-                    className="text-[13px] font-normal text-[#7a7a7a] no-underline leading-[2.0] hover:text-white transition-colors duration-150"
+                    className="text-[13px] font-normal text-[#999999] no-underline leading-[2.0] hover:text-white transition-colors duration-150"
                   >
                     {link}
                   </a>

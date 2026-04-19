@@ -51,7 +51,7 @@ const ToolsSection: React.FC<ToolsSectionProps> = ({ onViewAll, onToolClick }) =
           Tools We <GradientText>Provide</GradientText>
         </h2>
 
-        <p className="text-[16px] text-[#888888] max-w-[600px] mx-auto leading-relaxed">
+        <p className="text-[16px] text-[#999999] max-w-[600px] mx-auto leading-relaxed">
           Everything you need to manage your PDF documents in one place. Fast, secure, and completely free to use.
         </p>
       </div>

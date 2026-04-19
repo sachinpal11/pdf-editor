@@ -22,8 +22,8 @@ const LandingToolCard: React.FC<LandingToolCardProps> = ({ icon: Icon, title, de
       {/* Modern Spotlight Effect (Hover state) */}
       <div className="absolute inset-0 bg-[radial-gradient(800px_at_50%_-20%,rgba(245,82,12,0.12),transparent)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-      {/* Subtle Noise Texture for depth */}
-      <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      {/* Subtle overlay for depth */}
+      <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity duration-500 pointer-events-none mix-blend-overlay" />
 
       <div className="relative z-10 flex flex-col h-full">
         {/* Card Header: Icon + Title */}
@@ -38,7 +38,7 @@ const LandingToolCard: React.FC<LandingToolCardProps> = ({ icon: Icon, title, de
         </div>
 
         {/* Description */}
-        <p className="text-[15px] text-[#888888] leading-[1.6] transition-colors duration-500 group-hover:text-[#CCCCCC]">
+        <p className="text-[15px] text-[#999999] leading-[1.6] transition-colors duration-500 group-hover:text-[#CCCCCC]">
           {description}
         </p>
 

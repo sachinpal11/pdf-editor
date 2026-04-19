@@ -38,7 +38,7 @@ export default function Navbar({ onGetStarted }: Props) {
       </div>
 
       {/* Mobile hamburger */}
-      <button className="md:hidden bg-transparent border-none cursor-pointer text-white" onClick={() => setMenuOpen(!menuOpen)}>
+      <button className="md:hidden bg-transparent border-none cursor-pointer text-white" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation menu" aria-expanded={menuOpen}>
         {menuOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
 
@@ -51,6 +51,9 @@ export default function Navbar({ onGetStarted }: Props) {
 
       {/* Mobile sidebar panel */}
       <div
+        role="dialog"
+        aria-label="Navigation menu"
+        aria-modal="true"
         className="md:hidden fixed top-0 right-0 h-screen z-[200] flex flex-col w-[260px] border-l border-white/[0.07] bg-[#0A0A0A]"
         style={{ padding: '24px 20px', gap: 8, transform: menuOpen ? 'translateX(0)' : 'translateX(100%)', transition: 'transform 300ms cubic-bezier(0.16,1,0.3,1)' }}
       >

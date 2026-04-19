@@ -34,10 +34,10 @@ const PricingCard: React.FC<PricingCardProps> = ({ title, price, features, isBlu
       )}
 
       <div className="mb-8">
-        <h3 className="text-[18px] font-medium text-[#888888] mb-2">{title}</h3>
+        <h3 className="text-[18px] font-medium text-[#999999] mb-2">{title}</h3>
         <div className="flex items-baseline gap-1">
           <span className="text-[48px] font-bold text-white tracking-tight">{price}</span>
-          <span className="text-[#555555] font-medium">/forever</span>
+          <span className="text-[#888888] font-medium">/forever</span>
         </div>
       </div>
 
