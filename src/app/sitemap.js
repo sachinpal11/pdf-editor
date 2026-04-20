@@ -10,7 +10,7 @@ export default function sitemap() {
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/edit-pdf`,
+      url: `${baseUrl}/all-tools`,
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.9,
