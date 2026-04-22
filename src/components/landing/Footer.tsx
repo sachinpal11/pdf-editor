@@ -89,12 +89,17 @@ export default function Footer() {
       </div>
 
       {/* BOTTOM ZONE — Wordmark */}
-      <div className="relative z-10 w-full text-center pt-20 pb-10 overflow-hidden">
+      <div className="relative z-10 w-full text-center pt-20 pb-6 overflow-hidden">
         <p
           className="font-black font-medium whitespace-nowrap leading-[0.85] tracking-[-0.025em] text-white"
           style={{ fontSize: 'clamp(48px, 15vw, 210px)' }}
         >
           OnTheGo<GradientText>PDF</GradientText>
+        </p>
+      </div>
+      <div className="relative z-10 w-full text-center pb-10">
+        <p className="text-[13px] text-[#555555]">
+          © {new Date().getFullYear()} On The Go PDF. All rights reserved.
         </p>
       </div>
     </footer>

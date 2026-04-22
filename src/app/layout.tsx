@@ -16,8 +16,15 @@ export const metadata = {
   },
   description:
     'On The Go PDF is a free online PDF editor. Edit PDF files instantly — add text, images, draw, annotate, and sign PDFs. No installation, no signup required.',
+  applicationName: 'On The Go PDF',
+  appleWebApp: {
+    title: 'On The Go PDF',
+  },
   keywords: [
     'On The Go PDF',
+    'On The Go PDF editor',
+    'On The Go PDF tools',
+    'On The Go PDF converter',
     'onthegopdf',
     'free PDF editor',
     'online PDF editor',
@@ -25,6 +32,14 @@ export const metadata = {
     'edit PDF free',
     'PDF tools online',
     'PDF editor no signup',
+    'merge PDF online free',
+    'compress PDF online',
+    'sign PDF free online',
+    'annotate PDF online',
+    'add text to PDF free',
+    'edit PDF in browser',
+    'no installation PDF editor',
+    'best free PDF tools',
   ],
   authors: [{ name: 'On The Go PDF', url: 'https://onthegopdf.vercel.app' }],
   creator: 'On The Go PDF',
@@ -113,6 +128,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         <meta name="google-site-verification" content="RPZ_QtajeThtNhEraHKv7n-egeQEvsmZxbcW5gDJY8I" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
       </head>
       <body><PdfProvider>{children}</PdfProvider></body>
     </html>

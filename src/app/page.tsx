@@ -2,20 +2,20 @@ import HomePage from '@/components/HomePage';
 import Script from 'next/script';
 
 export const metadata = {
+  applicationName: 'On The Go PDF',
   title: 'On The Go PDF - Free Online PDF Editor | Edit PDF Instantly',
   description:
     'On The Go PDF lets you edit PDF files online for free. Add text, images, draw, annotate, and sign your PDFs in seconds. No installation or signup needed.',
   alternates: {
-    canonical: 'https://onthegopdf.vercel.app',
+    canonical: 'https://onthegopdf.vercel.app/',
   },
   openGraph: {
     title: 'On The Go PDF - Free Online PDF Editor',
     description:
       'Edit PDF files online for free. Add text, images, draw, and annotate PDFs instantly. No signup required.',
-    url: 'https://onthegopdf.vercel.app',
+    url: 'https://onthegopdf.vercel.app/',
+    siteName: 'On The Go PDF',
   },
-
-
 };
 
 
@@ -82,7 +82,7 @@ export default function Page() {
     },
     description:
       'Free online PDF editor. Edit PDF files in your browser — add text, images, draw, annotate, and sign PDFs.',
-    url: 'https://onthegopdf.com',
+    url: 'https://onthegopdf.vercel.app/',
   };
 
   return <>
