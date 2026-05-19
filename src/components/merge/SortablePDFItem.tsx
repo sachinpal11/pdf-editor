@@ -46,7 +46,8 @@ export const SortablePDFItem: React.FC<SortablePDFItemProps> = ({ id, file, onRe
       <div className="flex items-center gap-3 flex-1 min-w-0">
         <button
           type="button"
-          className="cursor-grab active:cursor-grabbing text-gray-500 hover:text-white p-1 rounded hover:bg-white/[0.05] transition-colors"
+          className="cursor-grab active:cursor-grabbing text-gray-500 hover:text-white p-1 rounded hover:bg-white/[0.05] transition-colors touch-none"
+          style={{ touchAction: 'none' }}
           {...attributes}
           {...listeners}
           aria-label="Drag to reorder"
