@@ -11,7 +11,7 @@ export default function MergePage() {
   const router = useRouter();
 
   return (
-    <div className="bg-[#0A0A0A] min-h-screen text-white flex flex-col justify-between">
+    <div className="bg-[#0A0A0A] min-h-screen overflow-x-hidden text-white flex flex-col justify-between">
       <Navbar onGetStarted={() => router.push('/all-tools')} />
 
       {/* Background glow */}
