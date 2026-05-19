@@ -76,6 +76,10 @@ export default function HomePage({ onUpload }: Props) {
         onToolClick={(title) => {
           if (title === 'Edit PDF') {
             handleGetStarted();
+          } else if (title === 'Merge PDF') {
+            router.push('/merge');
+          } else if (title === 'Split PDF') {
+            router.push('/split');
           } else {
             router.push('/all-tools');
           }

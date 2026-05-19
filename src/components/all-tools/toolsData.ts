@@ -10,8 +10,8 @@ export interface Tool {
 
 export const tools: Tool[] = [
   { icon: FileEdit,      label: 'Edit PDF',      desc: 'Click any text to edit it',         route: '/upload', active: true  },
-  { icon: FilePlus,      label: 'Merge PDF',     desc: 'Combine multiple PDFs into one',    route: null,      active: false },
-  { icon: FileX,         label: 'Split PDF',     desc: 'Extract pages from a PDF',          route: null,      active: false },
+  { icon: FilePlus,      label: 'Merge PDF',     desc: 'Combine multiple PDFs into one',    route: '/merge',  active: true  },
+  { icon: FileX,         label: 'Split PDF',     desc: 'Extract pages from a PDF',          route: '/split',  active: true  },
   { icon: FileOutput,    label: 'PDF to Word',   desc: 'Convert PDF to editable Word',      route: null,      active: false },
   { icon: FileSearch,    label: 'Compress PDF',  desc: 'Reduce PDF file size',              route: null,      active: false },
   { icon: FileSignature, label: 'Sign PDF',      desc: 'Add your signature to a PDF',       route: null,      active: false },

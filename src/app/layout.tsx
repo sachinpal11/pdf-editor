@@ -129,6 +129,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         <meta name="google-site-verification" content="RPZ_QtajeThtNhEraHKv7n-egeQEvsmZxbcW5gDJY8I" />
+        <meta name="application-name" content="On The Go PDF" />
+        <meta name="apple-mobile-web-app-title" content="On The Go PDF" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
